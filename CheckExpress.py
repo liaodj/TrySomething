@@ -7,6 +7,7 @@
 
 #import csv
 import xlrd
+import requests
 
 def main():
     # filepath = '10-9.xls'
@@ -30,6 +31,14 @@ def main():
         name_list.append(table.row_values(i)[2])
     # print(name_list)
     print(','.join(name_list))
+
+    p = {}
+    p['text'] = '邓金龙'  # 比如: 227728570825
+    r = requests.get('http://ytozn.dh.cx/dea2a', timeout=30,params=p)
+    print(r.status_code)
+    print(r.text)
+
+
 
 if __name__ == '__main__':
     main()
